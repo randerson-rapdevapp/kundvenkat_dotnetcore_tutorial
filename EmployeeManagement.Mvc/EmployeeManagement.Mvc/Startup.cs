@@ -33,14 +33,10 @@ namespace EmployeeManagement.Mvc
 				app.UseDeveloperExceptionPage();
 			}
 
-			var fileServerOptions = new FileServerOptions();
-			fileServerOptions.DefaultFilesOptions.DefaultFileNames.Clear();
-			fileServerOptions.DefaultFilesOptions.DefaultFileNames.Add("home.html");
-			app.UseFileServer(fileServerOptions);
+			app.UseFileServer();
 
 			app.Use(async (context, next) =>
 			{
-				throw new Exception("blah");
 				await context.Response.WriteAsync("Hello world.");
 			});
 		}
