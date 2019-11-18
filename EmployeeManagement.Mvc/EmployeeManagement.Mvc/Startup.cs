@@ -32,12 +32,14 @@ namespace EmployeeManagement.Mvc
 			{
 				app.UseDeveloperExceptionPage();
 			}
+			else
+			{
 
-			app.UseFileServer();
+			}
 
 			app.Use(async (context, next) =>
 			{
-				await context.Response.WriteAsync("Hello world.");
+				await context.Response.WriteAsync("Environment: " + env.EnvironmentName);
 			});
 		}
 	}
